@@ -101,6 +101,11 @@ extension DemoView
         strokeLayer.fillColor = UIColor.clear.cgColor
         strokeLayer.strokeColor = UIColor.black.cgColor
         strokeLayer.lineWidth = 5
+
+        strokeLayer.lineDashPattern = [ 16.0, 16.0 ]
+        //strokeLayer.lineDashPhase = 0
+        //strokeLayer.lineCap = .round
+
         self.layer.addSublayer(strokeLayer)
     }
 }
