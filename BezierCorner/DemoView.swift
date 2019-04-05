@@ -20,6 +20,16 @@ class DemoView: UIView
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+
+    /*
+    override func draw(_ rect: CGRect) {
+        if let path = path {
+            path.lineWidth = 3
+            UIColor.black.setStroke()
+            path.stroke()
+        }
+    }
+     */
 }
 
 extension DemoView
@@ -81,11 +91,17 @@ extension DemoView
 
         path.close()
 
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = path.cgPath
-        
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = path.cgPath
         self.backgroundColor = UIColor.orange
-        self.layer.mask = shapeLayer
+        self.layer.mask = maskLayer
+        
+        let strokeLayer = CAShapeLayer()
+        strokeLayer.path = path.cgPath
+        strokeLayer.fillColor = UIColor.clear.cgColor
+        strokeLayer.strokeColor = UIColor.black.cgColor
+        strokeLayer.lineWidth = 5
+        self.layer.addSublayer(strokeLayer)
     }
 }
 
